@@ -27,11 +27,11 @@ long long measure_time(int N) {
     int key = -1;
 
     auto begin = chrono::steady_clock::now();
-    for (unsigned cnt = 100000; cnt != 0; --cnt)
+    for (unsigned cnt = 10'000'000; cnt != 0; --cnt)
         linear(arr, N, key);
     auto end = chrono::steady_clock ::now();
     delete[] arr;
-    return chrono::duration_cast<chrono::milliseconds>(end - begin).count();
+    return chrono::duration_cast<chrono::microseconds>(end - begin).count();
 }
 
 int main() {

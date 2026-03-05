@@ -38,7 +38,7 @@ long long measure_time(int N) {
     int total = 0;
 
     auto begin = chrono::steady_clock::now();
-    for (unsigned cnt = 10000000; cnt != 0; --cnt) {
+    for (unsigned cnt = 10'000'000; cnt != 0; --cnt) {
         total += binary(arr, N, key);
     }
     auto end = chrono::steady_clock::now();

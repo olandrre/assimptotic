@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('results/binary.csv', index_col=0)
+data = pd.read_csv('binary.csv', index_col=0)
 # data2 = pd.read_csv('results/linear.csv', index_col=0)
 
 plt.figure(figsize=(10, 6))

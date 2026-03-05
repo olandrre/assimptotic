@@ -36,17 +36,14 @@ long long measure_time(int N) {
 
     int key;
     // key = -1;
-    // int total = 0;
 
     auto begin = chrono::steady_clock::now();
     for (unsigned cnt = 10'000'000; cnt != 0; --cnt) {
         key = arr[dstr(rng)];
-        // total += binary(arr, N, key);
         binary(arr, N, key);
     }
     auto end = chrono::steady_clock::now();
     delete[] arr;
-    // cout << total << endl;
     return chrono::duration_cast<chrono::microseconds>(end - begin).count();
 }
 

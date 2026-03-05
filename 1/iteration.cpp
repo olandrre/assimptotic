@@ -24,18 +24,24 @@ long long measure_time(int N) {
         arr[idx] = dstr(rng);
     }
 
-    int key = -1;
+    int key;
+
+    // худший случай
+
+    // key = -1;
 
     auto begin = chrono::steady_clock::now();
-    for (unsigned cnt = 10'000'000; cnt != 0; --cnt)
+    for (unsigned cnt = 100'000; cnt != 0; --cnt) {
+        key = arr[dstr(rng)];
         linear(arr, N, key);
+    }
     auto end = chrono::steady_clock ::now();
     delete[] arr;
     return chrono::duration_cast<chrono::microseconds>(end - begin).count();
 }
 
 int main() {
-    ofstream file("linear.csv");
+    ofstream file("linear_medium.csv");
     file << ",X,Y" << endl;
     int elements[] = {100, 500, 1'000, 5'000, 10'000, 50'000, 100'000, 250'000, 500'000, 750'000, 1'000'000};
     for (int idx = 0; idx < 11; ++idx) {

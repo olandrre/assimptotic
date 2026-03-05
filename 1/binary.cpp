@@ -34,22 +34,24 @@ long long measure_time(int N) {
 
     sort(arr, arr + N);
 
-    int key = -1;
-    int total = 0;
+    int key;
+    // key = -1;
+    // int total = 0;
 
     auto begin = chrono::steady_clock::now();
     for (unsigned cnt = 10'000'000; cnt != 0; --cnt) {
-        total += binary(arr, N, key);
-        // binary(arr, N, key);
+        key = arr[dstr(rng)];
+        // total += binary(arr, N, key);
+        binary(arr, N, key);
     }
     auto end = chrono::steady_clock::now();
     delete[] arr;
-    cout << total << endl;
+    // cout << total << endl;
     return chrono::duration_cast<chrono::microseconds>(end - begin).count();
 }
 
 int main() {
-    ofstream file("binary.csv");
+    ofstream file("binary_mid.csv");
     file << ",X,Y" << endl;
     int elements[] = {100, 500, 1'000, 5'000, 10'000, 50'000, 100'000, 250'000, 500'000, 750'000, 1'000'000};
     for (int idx = 0; idx < 11; ++idx) {

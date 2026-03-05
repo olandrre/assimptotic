@@ -57,7 +57,7 @@ long long measure_time(int N) {
 }
 
 int main() {
-    ofstream file("stratagy_A2.csv");
+    ofstream file("strategy_A2.csv");
     file << ",X,Y" << endl;
     int elements[] = {100, 500, 1'000, 5'000, 10'000, 50'000, 100'000, 250'000, 500'000, 750'000, 1'000'000};
     for (int idx = 0; idx < 11; ++idx) {

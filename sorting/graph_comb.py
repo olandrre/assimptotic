@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-data1 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/combSorto01.csv', index_col=0)
+data1 = pd.read_csv('sorting/combSorto01.csv', index_col=0)
 
 def slope(data):
     x = np.log(data['swaps'])

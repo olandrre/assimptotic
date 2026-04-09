@@ -2,11 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-data1 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/Shell_sort_1.csv', index_col=0)
-data2 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/Shell_sort_2.csv', index_col=0)
-data3 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/Shell_sort_3.csv', index_col=0)
+data1 = pd.read_csv('sorting/Shell_sort_1.csv', index_col=0)
+data2 = pd.read_csv('sorting/Shell_sort_2.csv', index_col=0)
+data3 = pd.read_csv('sorting/Shell_sort_3.csv', index_col=0)
 
-skip = 5
+skip = 0
 
 def slope(data):
     x = np.log(data['elements'][skip:])

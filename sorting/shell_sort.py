@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-data1 = pd.read_csv('Shell_sort_1.csv', index_col=0)
-data2 = pd.read_csv('Shell_sort_2.csv', index_col=0)
-data3 = pd.read_csv('Shell_sort_3.csv', index_col=0)
+data1 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/Shell_sort_1.csv', index_col=0)
+data2 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/Shell_sort_2.csv', index_col=0)
+data3 = pd.read_csv('/Users/olandrre/Desktop/asimptotic/sorting/Shell_sort_3.csv', index_col=0)
 
 skip = 5
 
@@ -19,7 +19,7 @@ def line(data, color, label, skip):
     k, b = slope(data)
     x0 = np.log(data['elements'][skip:])
     y0 = np.exp(b) * (data['elements'][skip:] ** k)
-    plt.plot(data['elements'][skip::], y0, '-', color=color, linewidth=2, label=f'{label}, slope={k:1f}')
+    plt.plot(data['elements'][skip:], y0, '-', color=color, linewidth=2, label=f'{label}, slope={k:1f}')
     return k
 
 plt.figure(figsize=(10, 6))

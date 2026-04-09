@@ -92,8 +92,7 @@ int ShellSort_3(int* arr, int size) {
 
 long long measure_time(int N) {
     unsigned int n;
-
-    auto begin = chrono::steady_clock::now();
+    unsigned int total = 0;
 
     for (unsigned cnt = 5; cnt != 0; --cnt) {
         int* arr = new int[N];
@@ -102,13 +101,14 @@ long long measure_time(int N) {
         arr[idx] = N - idx;
         }
 
-
+        auto begin = chrono::steady_clock::now();
         n = ShellSort_3(arr, N);
+        auto end = chrono::steady_clock::now();
+        total += chrono::duration_cast<chrono::microseconds>(end - begin).count();
         delete[] arr;
     }
     
-    auto end = chrono::steady_clock::now();
-    return chrono::duration_cast<chrono::microseconds>(end - begin).count();
+    return total;
 }
 
 unsigned int iterations(int N) {

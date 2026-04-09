@@ -41,7 +41,8 @@ long long measure_time(int N, default_random_engine &rng) {
 
     uniform_int_distribution<int> dstr(0, N - 1);
 
-    auto begin = chrono::steady_clock::now();
+    unsigned int total = 0;
+
     for (unsigned cnt = 10'000; cnt != 0; --cnt) {
         int* arr = new int[N];
  
@@ -49,11 +50,16 @@ long long measure_time(int N, default_random_engine &rng) {
             arr[idx] = dstr(rng);
         }
 
+            
+        auto begin = chrono::steady_clock::now();
         n = comb_sort(arr, N);
+        auto end = chrono::steady_clock::now();
+
+        total += chrono::duration_cast<chrono::microseconds>(end - begin).count();
         delete[] arr;
     }
-    auto end = chrono::steady_clock::now();
-    return chrono::duration_cast<chrono::milliseconds>(end - begin).count();
+
+    return total;
 }
 
 unsigned int iterations(int N, default_random_engine &rng) {
@@ -76,7 +82,7 @@ int main() {
     unsigned seed = 9;
     default_random_engine rng(seed);
 
-    ofstream file("combSorto0.csv");
+    ofstream file("combSorto01.csv");
     file << "index,elements,time,swaps" << endl;
     int elements[] = {100, 500, 1'000, 2'000, 3'000, 4'000, 5'000, 6'000, 7'000, 8'000, 9'000, 10'000};
     for (int idx = 0; idx < 12; ++idx) {

@@ -35,11 +35,12 @@ long long measure_time(int N) {
     sort(arr, arr + N);
 
     int key;
+    key = arr[N/2 + 2];
     // key = -1;
 
     auto begin = chrono::steady_clock::now();
     for (unsigned cnt = 10'000'000; cnt != 0; --cnt) {
-        key = arr[dstr(rng)];
+        // key = arr[dstr(rng)];
         binary(arr, N, key);
     }
     auto end = chrono::steady_clock::now();
@@ -48,7 +49,7 @@ long long measure_time(int N) {
 }
 
 int main() {
-    ofstream file("binary_mid.csv");
+    ofstream file("binary_mid2.csv");
     file << ",X,Y" << endl;
     int elements[] = {100, 500, 1'000, 5'000, 10'000, 50'000, 100'000, 250'000, 500'000, 750'000, 1'000'000};
     for (int idx = 0; idx < 11; ++idx) {

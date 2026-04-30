@@ -85,7 +85,7 @@ int main() {
             for (unsigned idx = 0; idx < N; ++idx) {
                 double v_idx = -L + idx * dv;
 
-                psi_v[idx] = fabs(v_idx);  // fabs для double
+                psi_v[idx] = fabs(v_idx);
                 pdf[idx] = exp(-(v_idx * v_idx) / T) / sqrt(M_PI * T);
                 psi_v2[idx] = v_idx * v_idx;
             }

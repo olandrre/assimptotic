@@ -63,10 +63,17 @@ double Kahan_intefr(double const psi[], double const pdf[], double const dv, uns
 
 int main() {
     ofstream file("results_double.txt");
+    ofstream result_v("v_double.csv");
+    ofstream result_v2("v2_double.csv");
+
+    result_v << "T,N,method,result,theory,error" << endl;
+    result_v2 << "T,N,method,result,theory,error" << endl;
     double values_T[] = {0.1, 1.0, 100.0, 10000.0};
     unsigned int values_N[] = {10, 1000, 100000};
     
     file << scientific << setprecision(15);
+    result_v << scientific << setprecision(15);
+    result_v2 << scientific << setprecision(15);
 
     for (double T : values_T) {
         file << endl << "T = " << T << endl;
@@ -117,11 +124,24 @@ int main() {
             file << "<v^2> рекурсивным методом с циклом: " << c_recurs_v2 << ", ошибка: " << fabs(c_recurs_v2 - theory_v2) << endl;
             file << "<v^2> алгоритмом Кахена: " << kahan_v2 << ", ошибка: " << fabs(kahan_v2 - theory_v2) << endl;
 
+            result_v << T << ',' << N << ',' << "naive" << ',' << rect_v << ',' << theory_v << ',' << fabs(rect_v / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "naive_FMA" << ',' << rect_v_fma << ',' << theory_v << ',' << fabs(rect_v_fma / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "recursive" << ',' << recurs_v << ',' << theory_v << ',' << fabs(recurs_v / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "circle_recursive" << ',' << c_recurs_v << ',' << theory_v << ',' << fabs(c_recurs_v / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "kahan" << ',' << kahan_v << ',' << theory_v << ',' << fabs(kahan_v / theory_v - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "naive" << ',' << rect_v2 << ',' << theory_v2 << ',' << fabs(rect_v2 / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "naive_FMA" << ',' << rect_v2_fma << ',' << theory_v2 << ',' << fabs(rect_v2_fma / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "recursive" << ',' << recurs_v2 << ',' << theory_v2 << ',' << fabs(recurs_v2 / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "circle_recursive" << ',' << c_recurs_v2 << ',' << theory_v2 << ',' << fabs(c_recurs_v2 / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "kahan" << ',' << kahan_v2 << ',' << theory_v2 << ',' << fabs(kahan_v2 / theory_v2 - 1) * 100 << endl;
+
             delete[] pdf;
             delete[] psi_v;
             delete[] psi_v2;
         }
     }
     file.close();
+    result_v.close();
+    result_v2.close();
     return 0;
 }

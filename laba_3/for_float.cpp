@@ -111,30 +111,30 @@ int main() {
             float kahan_v2 = Kahan_intefr(psi_v2, pdf, dv, N);
 
             file << endl << "N = " << N << endl;
-            file << "<v> наивным методом: " << rect_v << ", ошибка: " << abs(rect_v - theory_v) << endl;
-            file << "<v> наивным методом с FMA: " << rect_v_fma << ", ошибка: " << abs(rect_v_fma - theory_v) << endl;
-            file << "<v> рекурсивным методом: " << recurs_v << ", ошибка: " << abs(recurs_v - theory_v) << endl;
-            file << "<v> рекурсивным методом с циклом: " << c_recurs_v << ", ошибка: " << abs(c_recurs_v - theory_v) << endl;
-            file << "<v> алгоритмом Кахена: " << kahan_v << ", ошибка: " << abs(kahan_v - theory_v) << endl;
+            file << "<v> наивным методом: " << rect_v << ", ошибка: " << fabs(rect_v - theory_v) << endl;
+            file << "<v> наивным методом с FMA: " << rect_v_fma << ", ошибка: " << fabs(rect_v_fma - theory_v) << endl;
+            file << "<v> рекурсивным методом: " << recurs_v << ", ошибка: " << fabs(recurs_v - theory_v) << endl;
+            file << "<v> рекурсивным методом с циклом: " << c_recurs_v << ", ошибка: " << fabs(c_recurs_v - theory_v) << endl;
+            file << "<v> алгоритмом Кахена: " << kahan_v << ", ошибка: " << fabs(kahan_v - theory_v) << endl;
             
             file << endl;
 
-            file << "<v^2> наивным методом: " << rect_v2 << ", ошибка: " << abs(rect_v2 - theory_v2) << endl;
-            file << "<v^2> наивным методом с FMA: " << rect_v2_fma << ", ошибка: " << abs(rect_v2_fma - theory_v2) << endl;
-            file << "<v^2> рекурсивным методом: " << recurs_v2 << ", ошибка: " << abs(recurs_v2 - theory_v2) << endl;
-            file << "<v^2> рекурсивным методом с циклом: " << c_recurs_v2 << ", ошибка: " << abs(c_recurs_v2 - theory_v2) << endl;
-            file << "<v^2> алгоритмом Кахена: " << kahan_v2 << ", ошибка: " << abs(kahan_v2 - theory_v2) << endl;
+            file << "<v^2> наивным методом: " << rect_v2 << ", ошибка: " << fabs(rect_v2 - theory_v2) << endl;
+            file << "<v^2> наивным методом с FMA: " << rect_v2_fma << ", ошибка: " << fabs(rect_v2_fma - theory_v2) << endl;
+            file << "<v^2> рекурсивным методом: " << recurs_v2 << ", ошибка: " << fabs(recurs_v2 - theory_v2) << endl;
+            file << "<v^2> рекурсивным методом с циклом: " << c_recurs_v2 << ", ошибка: " << fabs(c_recurs_v2 - theory_v2) << endl;
+            file << "<v^2> алгоритмом Кахена: " << kahan_v2 << ", ошибка: " << fabs(kahan_v2 - theory_v2) << endl;
 
-            result_v << T << ',' << N << ',' << "naive" << ',' << rect_v << ',' << theory_v << ',' << abs(rect_v / theory_v - 1) * 100 << endl;
-            result_v << T << ',' << N << ',' << "naive_FMA" << ',' << rect_v_fma << ',' << theory_v << ',' << abs(rect_v_fma / theory_v - 1) * 100 << endl;
-            result_v << T << ',' << N << ',' << "recursive" << ',' << recurs_v << ',' << theory_v << ',' << abs(recurs_v / theory_v - 1) * 100 << endl;
-            result_v << T << ',' << N << ',' << "circle_recursive" << ',' << c_recurs_v << ',' << theory_v << ',' << abs(c_recurs_v / theory_v - 1) * 100 << endl;
-            result_v << T << ',' << N << ',' << "kahan" << ',' << kahan_v << ',' << theory_v << ',' << abs(kahan_v / theory_v - 1) * 100 << endl;
-            result_v2 << T << ',' << N << ',' << "naive" << ',' << rect_v2 << ',' << theory_v2 << ',' << abs(rect_v2 / theory_v2 - 1) * 100 << endl;
-            result_v2 << T << ',' << N << ',' << "naive_FMA" << ',' << rect_v2_fma << ',' << theory_v2 << ',' << abs(rect_v2_fma / theory_v2 - 1) * 100 << endl;
-            result_v2 << T << ',' << N << ',' << "recursive" << ',' << recurs_v2 << ',' << theory_v2 << ',' << abs(recurs_v2 / theory_v2 - 1) * 100 << endl;
-            result_v2 << T << ',' << N << ',' << "circle_recursive" << ',' << c_recurs_v2 << ',' << theory_v2 << ',' << abs(c_recurs_v2 / theory_v2 - 1) * 100 << endl;
-            result_v2 << T << ',' << N << ',' << "kahan" << ',' << kahan_v2 << ',' << theory_v2 << ',' << abs(kahan_v2 / theory_v2 - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "naive" << ',' << rect_v << ',' << theory_v << ',' << fabs(rect_v / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "naive_FMA" << ',' << rect_v_fma << ',' << theory_v << ',' << fabs(rect_v_fma / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "recursive" << ',' << recurs_v << ',' << theory_v << ',' << fabs(recurs_v / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "circle_recursive" << ',' << c_recurs_v << ',' << theory_v << ',' << fabs(c_recurs_v / theory_v - 1) * 100 << endl;
+            result_v << T << ',' << N << ',' << "kahan" << ',' << kahan_v << ',' << theory_v << ',' << fabs(kahan_v / theory_v - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "naive" << ',' << rect_v2 << ',' << theory_v2 << ',' << fabs(rect_v2 / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "naive_FMA" << ',' << rect_v2_fma << ',' << theory_v2 << ',' << fabs(rect_v2_fma / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "recursive" << ',' << recurs_v2 << ',' << theory_v2 << ',' << fabs(recurs_v2 / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "circle_recursive" << ',' << c_recurs_v2 << ',' << theory_v2 << ',' << fabs(c_recurs_v2 / theory_v2 - 1) * 100 << endl;
+            result_v2 << T << ',' << N << ',' << "kahan" << ',' << kahan_v2 << ',' << theory_v2 << ',' << fabs(kahan_v2 / theory_v2 - 1) * 100 << endl;
 
             delete[] pdf;
             delete[] psi_v;
